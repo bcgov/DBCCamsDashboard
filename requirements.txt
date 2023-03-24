@@ -1,0 +1,6 @@
+pandas
+plotly
+pydeck
+streamlit
+stqdm
+tqdm
