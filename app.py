@@ -7,6 +7,7 @@ from stqdm import stqdm
 
 TEST = False
 
+
 def parse_data(data: dict) -> pd.DataFrame:
     data = {'camID': data['id'],
             'latitude': data['location']['latitude'],
