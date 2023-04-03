@@ -7,6 +7,10 @@ from stqdm import stqdm
 
 TEST = False
 
+st.set_page_config(
+    page_title='Introduction Page'
+)
+
 
 def parse_data(data: dict) -> pd.DataFrame:
     data = {'camID': data['id'],
@@ -21,7 +25,7 @@ def parse_data(data: dict) -> pd.DataFrame:
     return pd.DataFrame([data])
 
 
-@st.cache(suppress_st_warning=True)
+@st.cache_data()
 def load_data() -> pd.DataFrame:
     df = pd.DataFrame()
     for i in stqdm(range(2, 1018)):
@@ -38,7 +42,7 @@ def load_data() -> pd.DataFrame:
     df.loc[df['markedStale'], 'status'] = 'Stale'
     df.loc[df['markedDelayed'], 'status'] = 'Delayed'
 
-    df['responseTimeZScore'] = np.abs((df['lastAttemptResponseTime'] - df['updatePeriodMean'])/(df['updatePeriodStdDev'] + 1))
+    df['responseTimeZScore'] = (df['lastAttemptResponseTime'] - df['updatePeriodMean'])/(df['updatePeriodStdDev'] + 1)
     return df
 
 

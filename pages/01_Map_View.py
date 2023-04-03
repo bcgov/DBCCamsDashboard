@@ -2,6 +2,11 @@ import streamlit as st
 import plotly.express as px
 import pydeck as pdk
 
+from Introduction import load_data
+
+if 'data' not in st.session_state:
+    st.session_state['data'] = load_data()
+
 st.title("Camera API Map View")
 
 df = st.session_state['data'].copy()
