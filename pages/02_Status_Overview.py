@@ -1,5 +1,5 @@
 import streamlit as st
-from Introduction import load_data
+from utils import load_data
 
 if 'data' not in st.session_state:
     st.session_state['data'] = load_data()

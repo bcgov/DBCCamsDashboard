@@ -4,47 +4,13 @@ import plotly.express as px
 import requests
 import streamlit as st
 from stqdm import stqdm
+from utils import load_data
 
 TEST = False
 
 st.set_page_config(
     page_title='Introduction Page'
 )
-
-
-def parse_data(data: dict) -> pd.DataFrame:
-    data = {'camID': data['id'],
-            'latitude': data['location']['latitude'],
-            'longitude': data['location']['longitude'],
-            'lastAttemptTime': data['imageStats']['lastAttempt']['time'],
-            'lastAttemptResponseTime': data['imageStats']['lastAttempt']['seconds'],
-            'updatePeriodMean': data['imageStats']['updatePeriodMean'],
-            'updatePeriodStdDev': data['imageStats']['updatePeriodStdDev'],
-            'markedStale': data['imageStats']['markedStale'],
-            'markedDelayed': data['imageStats']['markedDelayed']}
-    return pd.DataFrame([data])
-
-
-@st.cache_data()
-def load_data() -> pd.DataFrame:
-    df = pd.DataFrame()
-    for i in stqdm(range(2, 1018)):
-        api_url = f"http://dev-images.drivebc.ca/webcam/api/v1/webcams/{i}"
-        response = requests.get(api_url)
-        if response.status_code != 200:
-            continue
-        else:
-            row = parse_data(response.json())
-            df = pd.concat([df, row])
-
-    df.reset_index(drop=True, inplace=True)
-    df['status'] = 'Active'
-    df.loc[df['markedStale'], 'status'] = 'Stale'
-    df.loc[df['markedDelayed'], 'status'] = 'Delayed'
-
-    df['responseTimeZScore'] = (df['lastAttemptResponseTime'] - df['updatePeriodMean'])/(df['updatePeriodStdDev'] + 1)
-    return df
-
 
 st.title("Camera API Dashboard")
 
