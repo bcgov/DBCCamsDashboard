@@ -27,7 +27,8 @@ with st.container():
     col3, col4 = st.columns(2)
     with col3:
         st.subheader("Camera Views in Stale or Delayed Status")
-        st.dataframe(df.loc[df['status'].isin(['Stale', 'Delayed']), ['camID', 'status']].reset_index(drop=True),
+        st.dataframe(df.loc[df['status'].isin(['Stale', 'Delayed']),
+                     ['camName', 'status']].reset_index(drop=True),
                      use_container_width=True)
 
     with col4:

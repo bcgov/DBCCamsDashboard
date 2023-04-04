@@ -6,7 +6,7 @@ from stqdm import stqdm
 
 @st.cache_data(ttl=180)
 def load_data() -> pd.DataFrame:
-    api_url = "https://images.drivebc.ca/webcam/api/v1/webcams?fields=id,caption,location,imageStats"
+    api_url = "https://images.drivebc.ca/webcam/api/v1/webcams?fields=id,camName,caption,location,imageStats"
     response = requests.get(api_url)
     df = parse_data(response.json())
 
@@ -23,6 +23,8 @@ def parse_data(data: dict) -> pd.DataFrame:
     records = []
     for record in data['webcams']:
         row_data = {'camID': record['id'],
+                    'camName': record['camName'],
+                    'caption': record['caption'],
                     'latitude': record['location']['latitude'],
                     'longitude': record['location']['longitude'],
                     'lastAttemptTime': record['imageStats']['lastAttempt']['time'],
