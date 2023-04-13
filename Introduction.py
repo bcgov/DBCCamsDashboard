@@ -5,14 +5,31 @@ import requests
 import streamlit as st
 from stqdm import stqdm
 from utils import load_data
+from PIL import Image
 
 TEST = False
 
+favicon = Image.open("frontend/images/favicon.png")
 st.set_page_config(
-    page_title='Introduction Page'
+    page_title="DriveBC Camera Dashboard",
+    page_icon=favicon
 )
 
+with open('frontend/css/style.css') as stylesheet:
+    st.markdown(f"<style>{stylesheet.read()}</style>", unsafe_allow_html=True)
+
 st.title("Camera API Dashboard")
+
+st.markdown("""
+<nav class="navbar">
+    <div class="banner">
+        <a href="https://gov.bc.ca">
+            <img src="https://developer.gov.bc.ca/static/BCID_H_rgb_rev-20eebe74aef7d92e02732a18b6aa6bbb.svg" alt="Government of British Columbia" class="navbar_logo">
+        </a>
+    </div>
+    <h2 class="navbar_title">DriveBC Camera Dashboard</h2>
+</nav>
+""", unsafe_allow_html=True)
 
 st.markdown("""
 ## Introduction

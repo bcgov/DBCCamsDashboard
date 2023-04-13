@@ -1,0 +1,97 @@
+/*Most styles were taken from he design system inside the DevHub*/
+
+/* button focus state */
+.css-9s5bis:focus {
+    outline: 4px solid #3B99FC;
+    outline-offset: 1px;
+    box-shadow: none;
+}
+
+footer {
+    display: none;
+}
+
+/* overriding for navbar header */
+.block-container {
+    padding-top: 8rem;
+    max-width: 54rem;
+}
+
+header {
+    top: 65px !important;
+}
+
+.css-1dp5vir {
+    display: none;
+}
+
+.css-vk3wp9, .css-vn9ybi, .css-10zg0a4, .css-vk3wp9 {
+    margin-top: 63px;
+}
+
+/* navbar */
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    height: 65px;
+    background-color: #036;
+    border-bottom: 2px solid #fcba19;
+    padding: 0 65px 0 65px;
+    color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media screen and (max-width: 729px) {
+    nav {
+        padding: 0 12px;
+    }
+}
+
+.navbar_logo {
+    width: 175px;
+    height: auto;
+}
+
+.navbar_title {
+    color: #fff;
+    font-size: 1.54912em;
+}
+
+@media screen and (max-width: 520px) {
+    .navbar_title {
+        color: #fff;
+        font-size: 1em;
+    }
+}
+
+/* sidebar */
+.css-6qob1r {
+    background-color: #38598A;
+    color: #fff;
+}
+
+.css-17lntkn, .css-pkbazv {
+    color: #fff;
+}
+
+.css-lrlib {
+    padding-top: 4rem;
+}
+
+.css-18l0hbk, .css-nziaof {
+    margin: 0;
+    border-radius: 0;
+    padding: 0.5rem;
+    padding-left: 1.5rem;
+
+}
+
+.css-nziaof {
+    background-color: rgba(123, 162, 204, 0.5);
+    border-left: 2px solid #fcc219;
+}
