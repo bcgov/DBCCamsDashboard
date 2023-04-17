@@ -97,12 +97,6 @@ nav {
     align-items: center;
 }
 
-@media screen and (max-width: 729px) {
-    nav {
-        padding: 0 12px;
-    }
-}
-
 .navbar_logo {
     width: 175px;
     height: auto;
@@ -111,13 +105,6 @@ nav {
 .navbar_title {
     color: #fff;
     font-size: 1.54912em;
-}
-
-@media screen and (max-width: 520px) {
-    .navbar_title {
-        color: #fff;
-        font-size: 1em;
-    }
 }
 
 /* sidebar */
@@ -148,7 +135,6 @@ nav {
 }
 
 /* Making sidebar a secondary top navbar */
-
 @media screen and (min-width: 768px) {
     section[data-testid="stSidebar"] {
         position: fixed !important;
@@ -179,5 +165,23 @@ nav {
 
     div[data-testid="collapsedControl"] button {
         margin: 
+    }
+}
+
+/* Mobile styling */
+@media screen and (max-width: 729px) {
+    nav {
+        padding: 0 12px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .navbar_title {
+        color: #fff;
+        font-size: 1em;
+    }
+    .css-nziaof {
+        border-bottom: 0;
+        border-left: 4px solid #fcc219;
     }
 }
