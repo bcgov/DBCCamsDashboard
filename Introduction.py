@@ -3,9 +3,12 @@ import pandas as pd
 import plotly.express as px
 import requests
 import streamlit as st
+import shutil
+
 from stqdm import stqdm
 from utils import load_data
 from PIL import Image
+from pathlib import Path
 
 TEST = False
 
@@ -17,10 +20,13 @@ st.set_page_config(
 
 with open('frontend/css/style.css') as stylesheet:
     st.markdown(f"<style>{stylesheet.read()}</style>", unsafe_allow_html=True)
-
+        
 st.title("Camera API Dashboard")
 
 st.markdown("""
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <nav class="navbar">
     <div class="banner">
         <a href="https://gov.bc.ca">

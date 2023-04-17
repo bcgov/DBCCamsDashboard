@@ -1,5 +1,55 @@
 /*Most styles were taken from he design system inside the DevHub*/
 
+@font-face {
+    font-family: 'BCSans';
+    font-style: normal;
+    src: url('frontend/font/BC-Sans-Font-woff/BCSans-Regular.woff2') format('woff2'), /* Optimized for very modern browsers */
+         url('frontend/font/BC-Sans-Font-woff/BCSans-Regular.woff') format('woff'); /* Modern Browsers */
+}
+  @font-face {
+    font-family: 'BCSans';
+    font-style: italic;
+    src: url('frontend/font/BC-Sans-Font-woff/BCSans-Italic.woff2') format('woff2'), /* Optimized for very modern browsers */
+         url('frontend/font/BC-Sans-Font-woff/BCSans-Italic.woff') format('woff'); /* Modern Browsers */
+}
+  @font-face {
+    font-family: 'BCSans';
+    font-weight: 700;
+    src: url('frontend/font/BC-Sans-Font-woff/BCSans-Bold.woff2') format('woff2'), /* Optimized for very modern browsers */
+         url('frontend/font/BC-Sans-Font-woff/BCSans-Bold.woff') format('woff'); /* Modern Browsers */
+}
+  @font-face {
+    font-family: 'BCSans';
+    font-style: italic;
+    font-weight: 700;
+    src: url('frontend/font/BC-Sans-Font-woff/BCSans-BoldItalic.woff2') format('woff2'), /* Optimized for very modern browsers */
+         url('frontend/font/BC-Sans-Font-woff/BCSans-BoldItalic.woff') format('woff'); /* Modern Browsers */
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'BCSans', 'Noto Sans', Verdana, Arial, sans-serif;
+}
+
+p {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 2.074em;
+}
+
+h2 {
+    font-size: 1.728em;
+}
+
+h3 {
+    font-size: 1.44em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
 /* button focus state */
 .css-9s5bis:focus {
     outline: 4px solid #3B99FC;
@@ -12,20 +62,21 @@ footer {
 }
 
 /* overriding for navbar header */
-.block-container {
+.css-1y4p8pa {
     padding-top: 8rem;
-    max-width: 54rem;
+    max-width: 1100px;
 }
 
-header {
-    top: 65px !important;
+.css-18ni7ap {
+    top: 65px;
+    background: none;
 }
 
 .css-1dp5vir {
     display: none;
 }
 
-.css-vk3wp9, .css-vn9ybi, .css-10zg0a4, .css-vk3wp9 {
+.e1fqkh3o11, div[data-testid="collapsedControl"] button {
     margin-top: 63px;
 }
 
@@ -46,12 +97,6 @@ nav {
     align-items: center;
 }
 
-@media screen and (max-width: 729px) {
-    nav {
-        padding: 0 12px;
-    }
-}
-
 .navbar_logo {
     width: 175px;
     height: auto;
@@ -60,13 +105,6 @@ nav {
 .navbar_title {
     color: #fff;
     font-size: 1.54912em;
-}
-
-@media screen and (max-width: 520px) {
-    .navbar_title {
-        color: #fff;
-        font-size: 1em;
-    }
 }
 
 /* sidebar */
@@ -79,19 +117,71 @@ nav {
     color: #fff;
 }
 
-.css-lrlib {
-    padding-top: 4rem;
-}
-
 .css-18l0hbk, .css-nziaof {
     margin: 0;
     border-radius: 0;
-    padding: 0.5rem;
-    padding-left: 1.5rem;
+    padding: 14px 10px;
 
+}
+
+.css-18l0hbk:hover, .css-nziaof:hover {
+    text-decoration: underline;
+    color: #fff;
 }
 
 .css-nziaof {
     background-color: rgba(123, 162, 204, 0.5);
-    border-left: 2px solid #fcc219;
+    border-bottom: 2px solid #fcc219;
+}
+
+/* Making sidebar a secondary top navbar */
+@media screen and (min-width: 768px) {
+    section[data-testid="stSidebar"] {
+        position: fixed !important;
+        width: 100% !important;
+        max-width: 100%;
+        height: auto !important;
+        transform: none;
+    }
+
+    .css-lrlib {
+        display: flex;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 65px;
+    }
+
+    .css-e3xfei {
+        padding: 0;
+    }
+
+    .css-1nm2qww .css-9s5bis {
+        display: none;
+    }
+
+    .css-18ni7ap {
+        top: 130px;
+    }
+
+    div[data-testid="collapsedControl"] button {
+        margin: 
+    }
+}
+
+/* Mobile styling */
+@media screen and (max-width: 729px) {
+    nav {
+        padding: 0 12px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .navbar_title {
+        color: #fff;
+        font-size: 1em;
+    }
+    .css-nziaof {
+        border-bottom: 0;
+        border-left: 4px solid #fcc219;
+    }
 }
