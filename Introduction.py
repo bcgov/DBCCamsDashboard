@@ -5,7 +5,6 @@ import requests
 import streamlit as st
 import shutil
 
-from stqdm import stqdm
 from utils import load_data
 from PIL import Image
 from pathlib import Path

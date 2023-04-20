@@ -39,6 +39,7 @@ count_near_stale = df[(df['responseTimeZScore'] >= 1.75) & (~df['status'].isin([
 count_near_delayed = df[(df['responseTimeZScore'] >= 4) & (~df['status'].isin(['Delayed']))].shape[0]
 
 with st.container():
+    st.metric('Total Count of Cameras', value=df['cameraId'].nunique())
     col1, col2 = st.columns(2)
     with col1:
         st.metric('Count of Stale Camera Views', value=count_stale)

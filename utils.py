@@ -1,7 +1,6 @@
 import pandas as pd
 import requests
 import streamlit as st
-from stqdm import stqdm
 
 
 @st.cache_data(ttl=180)
@@ -16,6 +15,7 @@ def load_data() -> pd.DataFrame:
     df.loc[df['markedDelayed'], 'status'] = 'Delayed'
 
     df['responseTimeZScore'] = (df['lastAttemptResponseTime'] - df['updatePeriodMean']) / (df['updatePeriodStdDev'] + 1)
+    df['cameraId'] = df.groupby(['latitude', 'longitude'], sort=False).ngroup() + 1
     return df
 
 
