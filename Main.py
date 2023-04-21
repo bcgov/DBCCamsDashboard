@@ -14,7 +14,9 @@ with open("frontend/css/style.css") as stylesheet:
     st.markdown(f'<style>{stylesheet.read()}</style>', unsafe_allow_html=True)
 
 if 'data' not in st.session_state:
+    st.session_state['version'] = "0.5.0"    
     st.session_state['data'] = load_data()
+
 
 st.title("Camera API Map View")
 
@@ -34,8 +36,8 @@ st.markdown("""
 
 px.set_mapbox_access_token(open(".mapbox_token").read())
 
-fig = px.scatter_mapbox(st.session_state['data'], lat='latitude', lon='longitude', color='status',
+fig = px.scatter_mapbox(st.session_state['data'], lat='Latitude', lon='Longitude', color='Status',
                         color_discrete_map={'Active': 'green', 'Stale': 'yellow', 'Delayed': 'red'},
-                        zoom=5, hover_name='camName', hover_data=['caption', 'responseTimeZScore']
+                        zoom=5, hover_name='Camera Name', hover_data=['Caption', 'Last Attempt Time']
                         )
 st.plotly_chart(fig, use_container_width=True)

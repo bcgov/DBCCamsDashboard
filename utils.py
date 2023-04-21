@@ -10,29 +10,29 @@ def load_data() -> pd.DataFrame:
     df = parse_data(response.json())
 
     df.reset_index(drop=True, inplace=True)
-    df['status'] = 'Active'
-    df.loc[df['markedStale'], 'status'] = 'Stale'
-    df.loc[df['markedDelayed'], 'status'] = 'Delayed'
+    df['Status'] = 'Active'
+    df.loc[df['Marked Stale'], 'Status'] = 'Stale'
+    df.loc[df['Marked Delayed'], 'Status'] = 'Delayed'
 
-    df['responseTimeZScore'] = (df['lastAttemptResponseTime'] - df['updatePeriodMean']) / (df['updatePeriodStdDev'] + 1)
-    df['cameraId'] = df.groupby(['latitude', 'longitude'], sort=False).ngroup() + 1
+    df['Response Time Z-Score'] = (df['Last Attempt Response Time'] - df['Update Period Mean']) / (df['Update Period Standard Deviation'] + 1)
+    df['Camera Id'] = df.groupby(['Latitude', 'Longitude'], sort=False).ngroup() + 1
     return df
 
 
 def parse_data(data: dict) -> pd.DataFrame:
     records = []
     for record in data['webcams']:
-        row_data = {'camID': record['id'],
-                    'camName': record['camName'],
-                    'caption': record['caption'],
-                    'latitude': record['location']['latitude'],
-                    'longitude': record['location']['longitude'],
-                    'lastAttemptTime': record['imageStats']['lastAttempt']['time'],
-                    'lastAttemptResponseTime': record['imageStats']['lastAttempt']['seconds'],
-                    'updatePeriodMean': record['imageStats']['updatePeriodMean'],
-                    'updatePeriodStdDev': record['imageStats']['updatePeriodStdDev'],
-                    'markedStale': record['imageStats']['markedStale'],
-                    'markedDelayed': record['imageStats']['markedDelayed']}
+        row_data = {'Camera View ID': record['id'],
+                    'Camera Name': record['camName'],
+                    'Caption': record['caption'],
+                    'Latitude': record['location']['latitude'],
+                    'Longitude': record['location']['longitude'],
+                    'Last Attempt Time': record['imageStats']['lastAttempt']['time'],
+                    'Last Attempt Response Time': record['imageStats']['lastAttempt']['seconds'],
+                    'Update Period Mean': record['imageStats']['updatePeriodMean'],
+                    'Update Period Standard Deviation': record['imageStats']['updatePeriodStdDev'],
+                    'Marked Stale': record['imageStats']['markedStale'],
+                    'Marked Delayed': record['imageStats']['markedDelayed']}
 
         records.append(row_data)
 
