@@ -37,7 +37,7 @@ st.markdown("""
 px.set_mapbox_access_token(open(".mapbox_token").read())
 
 fig = px.scatter_mapbox(st.session_state['data'], lat='Latitude', lon='Longitude', color='Status',
-                        color_discrete_map={'Active': 'green', 'Stale': 'yellow', 'Delayed': 'red'},
+                        color_discrete_map={'Active': 'green', 'Stale': '#EE442F', 'Delayed': '#601A4A'},
                         zoom=5, hover_name='Camera Name', hover_data=['Caption', 'Last Attempt Time']
                         )
 st.plotly_chart(fig, use_container_width=True)
