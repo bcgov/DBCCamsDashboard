@@ -21,7 +21,7 @@ with open('frontend/css/style.css') as stylesheet:
     st.markdown(f"<style>{stylesheet.read()}</style>", unsafe_allow_html=True)
 
 if 'data' not in st.session_state:
-    st.session_state['version'] = "0.5.0" 
+    st.session_state['version'] = "0.5.3" 
     st.session_state['data'] = load_data()
 
 st.title(f"Camera API Dashboard - Version: {st.session_state['version']}")
