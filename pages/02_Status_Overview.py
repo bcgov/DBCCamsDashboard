@@ -40,23 +40,27 @@ count_near_stale = df[(df['Response Time Z-Score'] >= 1.75) & (~df['Status'].isi
 count_near_delayed = df[(df['Response Time Z-Score'] >= 4) & (~df['Status'].isin(['Delayed']))].shape[0]
 
 with st.container():
-    st.metric('Total Count of Cameras', value=df['Camera Id'].nunique())
     col1, col2 = st.columns(2)
     with col1:
+        st.metric('Total Count of Cameras', value=df['Camera Id'].nunique())
+    with col2:
+        st.metric('Total count of Camera Views', value=df.shape[0])
+    col3, col4= st.columns(2)
+    with col3:
         st.metric('Count of Stale Camera Views', value=count_stale)
         st.metric('Count of Cameras Near Stale Threshold', value=count_near_stale)
 
-    with col2:
+    with col4:
         st.metric('Count of Delayed Camera Views', value=count_delayed)
         st.metric('Count of Cameras Near Delayed Threshold', value=count_near_delayed)
-    col3, col4 = st.columns(2)
-    with col3:
+    col5, col6 = st.columns(2)
+    with col5:
         st.subheader("Camera Views in Stale or Delayed Status")
         st.dataframe(df.loc[df['Status'].isin(['Stale', 'Delayed']),
                      ['Camera View ID', 'Camera Name', 'Status']].set_index('Camera View ID'),
                      use_container_width=True)
 
-    with col4:
+    with col6:
         st.subheader("Camera Views Near Stale Threshold")
         st.dataframe(df.loc[(df['Response Time Z-Score'] >= 1.75) & (~df['Status'].isin(['Stale', 'Delayed'])),
                             ['Camera View ID', 'Last Attempt Response Time', 'Update Period Mean',
