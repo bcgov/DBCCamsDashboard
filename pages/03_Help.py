@@ -38,11 +38,11 @@ st.markdown(
 
     ### Mean
 
-    The arithmetic mean is the most commonly thought of average. 
+    The arithmetic mean is most commonly thought of as the average. 
 
     ### Standard Deviation
 
-    The standard deviation can be thought of as the average amount that individual data points vary from the mean
+    The standard deviation can be thought of as the average amount that individual data points vary from the mean.
 
     ### Z-score
 
@@ -50,9 +50,7 @@ st.markdown(
 
     ### General Note
 
-    
-    The above statistical concepts do presume that the data is roughly bell curve shaped, called a Normal Distribution.
-    So the visualizations below will assume a standard normal distribution. (A normal distribution where the mean is zero and the standard deviation is 1)
+    The above statistical concepts do presume that the data is roughly bell curve shaped, called a Normal Distribution. So the visualizations below will assume a standard normal distribution (where the mean is zero and the standard deviation is 1).
     
     """
 )

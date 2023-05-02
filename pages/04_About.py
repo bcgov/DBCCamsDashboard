@@ -56,10 +56,12 @@ There are two pages so far not counting this introductory page
 
 2) Overview Statistics
 
-    This view shows 4 major details:
-    1) How many Cameras are currently Stale
-    2) How many Cameras are currently Delayed
-    3) Which Cameras are currently Stale or Delayed
-    4) Which Cameras are near their Stale or Delayed Threshold 
+    This view shows 6 major details:
+    1. The total number of cameras
+    2. The total number of camera views.
+    3. How many Cameras are currently Stale
+    4. How many Cameras are currently Delayed
+    5. Which Cameras are currently Stale or Delayed
+    6. Which Cameras are near their Stale or Delayed Threshold 
 
 """)
